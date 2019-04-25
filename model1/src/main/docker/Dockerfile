@@ -5,4 +5,4 @@ FROM openjdk:8
 WORKDIR /gjny/jar-docker
  
 #容器启动后执行的操作
-CMD java -jar testjenkins.jar
+CMD java -jar model1.jar
