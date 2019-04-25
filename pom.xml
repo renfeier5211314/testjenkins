@@ -21,6 +21,7 @@
     <modules>
         <module>model1</module>
         <module>model2</module>
+        <module>modelweb</module>
     </modules>
     <dependencies>
         <dependency>
