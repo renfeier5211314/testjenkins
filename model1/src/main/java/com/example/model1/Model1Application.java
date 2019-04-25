@@ -9,6 +9,9 @@ public class Model1Application {
     public static void main(String[] args) {
         SpringApplication.run(Model1Application.class, args);
 //        System.out.println(TestUtil.test());
+
+
+        System.out.println("我是model    1");
     }
 
 }

@@ -8,6 +8,12 @@ public class Model2Application {
 
     public static void main(String[] args) {
         SpringApplication.run(Model2Application.class, args);
+
+
+
+        System.out.println("我是model2");
+
+
 //        System.out.println(TestUtil.test());
     }
 
