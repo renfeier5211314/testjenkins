@@ -16,6 +16,7 @@
 
     <properties>
         <java.version>1.8</java.version>
+        <docker.image.prefix>rj</docker.image.prefix>
     </properties>
 
     <dependencies>
@@ -45,36 +46,38 @@
 
 
             <!-- maven 的 docker 配置 -->
-              <plugin>
-                  <groupId>com.spotify</groupId>
-                  <artifactId>docker-maven-plugin</artifactId>
-                  <version>0.4.13</version>
-              </plugin>
-              <plugin>
-                  <groupId>com.spotify</groupId>
-                  <artifactId>docker-maven-plugin</artifactId>
-                  <version>0.4.13</version>
-                  <executions>
-                      <execution>
-                          <phase>package</phase>
-                          <goals>
-                              <goal>build</goal>
-                          </goals>
-                      </execution>
-                  </executions>
-                  <configuration>
-                      <imageName>test/${project.artifactId}</imageName>
-                      <!-- 指定Dockerfile所在的路径 -->
-                      <dockerDirectory>src/main/docker</dockerDirectory>
-                      <resources>
-                          <resource>
-                              <targetPath>/</targetPath>
-                              <directory>${project.build.directory}</directory>
-                              <include>${project.build.finalName}.jar</include>
-                          </resource>
-                      </resources>
-                  </configuration>
-              </plugin>
+            <plugin>
+                <groupId>com.spotify</groupId>
+                <artifactId>docker-maven-plugin</artifactId>
+                <version>0.4.13</version>
+            </plugin>
+            <plugin>
+                <groupId>com.spotify</groupId>
+                <artifactId>docker-maven-plugin</artifactId>
+                <version>0.4.13</version>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>build</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <!-- 镜像名称 -->
+                    <imageName>${docker.image.prefix}/${project.artifactId}</imageName>
+                    <!-- 指定Dockerfile 文件的位置 -->
+                    <dockerDirectory>src/main/docker</dockerDirectory>
+                    <!-- 指定哪些文件需要和 Dockerfile放在一起，一般jar包需要  -->
+                    <resources>
+                        <resource>
+                            <targetPath>/</targetPath>
+                            <directory>${project.build.directory}</directory>
+                            <include>${project.build.finalName}.jar</include>
+                        </resource>
+                    </resources>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 
