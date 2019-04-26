@@ -45,12 +45,7 @@
 
 
             <!-- maven 的 docker 配置 -->
-            <plugin>
-                <groupId>com.spotify</groupId>
-                <artifactId>docker-maven-plugin</artifactId>
-                <version>0.4.13</version>
-            </plugin>
-            <plugin>
+           <!-- <plugin>
                 <groupId>com.spotify</groupId>
                 <artifactId>docker-maven-plugin</artifactId>
                 <version>0.4.13</version>
@@ -63,11 +58,11 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <!-- 镜像名称 -->
+                    &lt;!&ndash; 镜像名称 &ndash;&gt;
                     <imageName>${project.artifactId}</imageName>
-                    <!-- 指定Dockerfile 文件的位置 -->
-                    <dockerDirectory>src/main/docker</dockerDirectory>
-                    <!-- 指定哪些文件需要和 Dockerfile放在一起，一般jar包需要  -->
+                    &lt;!&ndash; 指定Dockerfile 文件的位置 &ndash;&gt;
+                    <dockerDirectory>${project.basedir}/src/main/docker</dockerDirectory>
+                    &lt;!&ndash; 指定哪些文件需要和 Dockerfile放在一起，一般jar包需要  &ndash;&gt;
                     <resources>
                         <resource>
                             <targetPath>/</targetPath>
@@ -76,7 +71,35 @@
                         </resource>
                     </resources>
                 </configuration>
-            </plugin>
+            </plugin>-->
+
+
+
+
+            <plugin>
+				<groupId>com.spotify</groupId>
+				<artifactId>docker-maven-plugin</artifactId>
+				<version>0.4.13</version>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>build</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<imageName>lmgd/${project.artifactId}</imageName>
+					<dockerDirectory>${project.basedir}/</dockerDirectory>
+					<resources>
+						<resource>
+							<targetPath>/</targetPath>
+							<directory>${project.build.directory}</directory>
+							<include>${project.build.finalName}.jar</include>
+						</resource>
+					</resources>
+				</configuration>
+			</plugin>
         </plugins>
     </build>
 
