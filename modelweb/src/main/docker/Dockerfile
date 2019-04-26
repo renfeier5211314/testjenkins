@@ -1,7 +1,8 @@
-FROM java:8
-VOLUME /tmp
-ADD ./target/modelweb.jar /app.jar
-RUN bash -c 'touch /app.jar'
-EXPOSE 8131
-ENV JAVA_OPTS=""
-ENTRYPOINT [ "sh", "-c", "java $JAVA_OPTS -Djava.security.egd=file:/dev/./urandom -jar /app.jar" ]
+#基于openjdk:8
+FROM openjdk:8
+ 
+# 指定当前操作目录
+WORKDIR /gjny/jar-docker
+ 
+#容器启动后执行的操作
+CMD java -jar modelweb.jar
