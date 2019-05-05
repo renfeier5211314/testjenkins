@@ -45,7 +45,7 @@
 
 
             <!-- maven 的 docker 配置 -->
-           <!-- <plugin>
+            <plugin>
                 <groupId>com.spotify</groupId>
                 <artifactId>docker-maven-plugin</artifactId>
                 <version>0.4.13</version>
@@ -58,11 +58,11 @@
                     </execution>
                 </executions>
                 <configuration>
-                    &lt;!&ndash; 镜像名称 &ndash;&gt;
+                    <!-- docker 打包完后镜像名称-->
                     <imageName>${project.artifactId}</imageName>
-                    &lt;!&ndash; 指定Dockerfile 文件的位置 &ndash;&gt;
-                    <dockerDirectory>${project.basedir}/src/main/docker</dockerDirectory>
-                    &lt;!&ndash; 指定哪些文件需要和 Dockerfile放在一起，一般jar包需要  &ndash;&gt;
+                    <!--指定Dockerfile 文件的位置-->
+                    <dockerDirectory>${project.basedir}/</dockerDirectory>
+                    <!--指定哪些文件需要和 Dockerfile放在一起，一般jar包需要-->
                     <resources>
                         <resource>
                             <targetPath>/</targetPath>
@@ -71,35 +71,7 @@
                         </resource>
                     </resources>
                 </configuration>
-            </plugin>-->
-
-
-
-
-            <plugin>
-				<groupId>com.spotify</groupId>
-				<artifactId>docker-maven-plugin</artifactId>
-				<version>0.4.13</version>
-				<executions>
-					<execution>
-						<phase>package</phase>
-						<goals>
-							<goal>build</goal>
-						</goals>
-					</execution>
-				</executions>
-				<configuration>
-					<imageName>lmgd/${project.artifactId}</imageName>
-					<dockerDirectory>${project.basedir}/</dockerDirectory>
-					<resources>
-						<resource>
-							<targetPath>/</targetPath>
-							<directory>${project.build.directory}</directory>
-							<include>${project.build.finalName}.jar</include>
-						</resource>
-					</resources>
-				</configuration>
-			</plugin>
+            </plugin>
         </plugins>
     </build>
 
