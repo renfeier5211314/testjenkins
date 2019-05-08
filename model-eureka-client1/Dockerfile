@@ -1,6 +1,6 @@
 FROM java:8
-VOLUME /tmp
-ADD ./target/modelweb.jar /app.jar
+VOLUME /gjny/jar-docker-testjenkins/tmp
+ADD ./target/model-eureka-client1.jar /app.jar
 RUN bash -c 'touch /app.jar'
 EXPOSE 8112
 ENV JAVA_OPTS="-Xmx64m -Xss512K"
