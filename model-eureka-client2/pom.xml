@@ -55,13 +55,10 @@
         <finalName>${project.artifactId}</finalName>
 
         <plugins>
-
-
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
-
 
             <!-- maven 的 docker 配置 -->
             <plugin>

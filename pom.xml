@@ -19,9 +19,12 @@
         <java.version>1.8</java.version>
     </properties>
     <modules>
-        <module>model1</module>
+        <!--<module>model1</module>
         <module>model2</module>
-        <module>modelweb</module>
+        <module>modelweb</module>-->
+        <module>model-eureka-server</module>
+        <module>model-eureka-client1</module>
+        <module>model-eureka-client2</module>
     </modules>
     <dependencies>
 
